@@ -1,0 +1,56 @@
+<input name="order_id" type="hidden" value="<%=order_id%>">
+
+<div id="main-content" class="clearfix">
+
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">新建订单</li>
+    </ul>
+    <!--.breadcrumb-->
+  </div>
+  <!--#breadcrumbs-->
+
+
+  <div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1>订单详细</h1>
+      <!--// 1 等待  2 订单成功 3 被旅行社取消 4 被用户取消 5 过期-->
+      <div class="order_status alert" id="status_1">
+        <strong>等待审核</strong> 订单正在等在您的审核，订单您的后信息不能编辑了。
+      </div>
+      <div class="order_status alert alert-success" id="status_2">
+        <strong>预定成功</strong> 您的已经审核订单，谢谢支持！
+      </div>
+      <div class="order_status alert alert-error" id="status_3">
+        <strong>取消订单</strong> 订单已被旅行社取消。<br>原因是：<span id="order_reason_3"></span>
+      </div>
+      <div class="order_status alert alert-error" id="status_4">
+        <strong>取消订单</strong> 订单已被用户取消。<br>原因是：<span id="order_reason_4"></span>
+      </div>
+      <div class="order_status alert alert-error" id="status_5">
+        <strong>订单过期</strong> 这个订单已经过期。<br>原因是：<span id="order_reason_5"></span>
+      </div>
+    </div>
+    <!--/page-header-->
+
+    <div class="row-fluid">
+      <div class="span12">
+        <% include common_order_detail.html %>
+        <div class="">
+          <a href="/printf/order?order_id=<%=order_id%>" class="btn btn-primary" target="_blank">打印订单</a>
+          <button id="confirmOrderBtn" data="<%=order_id%>" class="btn btn-primary">确认订单</button>
+          <button id="cancelOrderBtn" data="<%=order_id%>" class="btn btn-primary">取消订单</button>
+        </div>
+        </form>
+      </div>
+      <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+    <!--/row-->
+
+  </div>
+</div>
+<script type="text/javascript" language="javascript" src="/common.order.js"></script>
+<script type="text/javascript" language="javascript" src="/agent.order.js"></script>

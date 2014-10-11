@@ -1,0 +1,337 @@
+<style>
+  .travelInfo {
+    font-size: 14px;
+    font-family: "microsoft yahei";
+    width: 80%;
+  }
+
+  .mytable {
+    border: 1px solid;
+
+  }
+
+  .alert-success {
+    background: #f4f4f4 !important;
+    color: #000000;
+  }
+
+  .alert-detail {
+    background: #ffffff !important;
+    color: #000000;
+  }
+
+</style>
+
+<div id="main-content" class="clearfix">
+
+<div id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span>
+    </li>
+    <li><a href="#">旅游管理</a> <span class="divider"><i class="icon-angle-right"></i></span></li>
+    <li class="active">线路详细</li>
+  </ul>
+
+
+</div>
+<div class="container-fluid">
+
+<div class="row-fluid">
+<div class="span12">
+<div class="widget-box">
+<div class="widget-title">
+
+
+  <div class="buttons">
+  </div>
+</div>
+
+
+<div class="widget-content">
+
+<div class="invoice-content alert alert-info" style="padding-top: 0px">
+
+  <h3 style="font-family: '微软雅黑';width: 100% ;text-align: center;"><%=locals.travel._product.routename%></h3>
+
+  <table class="travelInfo">
+    <tr>
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">团号:</a></span></td>
+      <td><span><%=locals.travel.travel_code%></span></td>
+      </td>
+
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">送团人:</a></span></td>
+      <td><span><%=locals.travel._product.staff%></span></td>
+      </td>
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">旅游天数:</a></span></td>
+      <td><span><%=locals.travel._product.days%>天</span></td>
+
+    </tr>
+    <tr>
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">出发: </a>
+                     </span></td>
+      <td><span><%=locals.travel._product.startAddress%></span></td>
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">出团时间: </a></span></td>
+      <td><span><%=locals.travel.traveldate%></span></td>
+
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">集合地点: </a></span></td>
+      <td><span><%=locals.travel.pickup_time%></span></td>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">抵达:</a>
+                     </span></td>
+      <td><span><%=locals.travel._product.endAddress%></span></td>
+      <td style="text-align: right"><span><a href="javascript:void(0);"
+                                             style="color:#000000;">返程时间:</a></span></td>
+      <td><span><%=locals.travel.finish_time%></span></td>
+
+    </tr>
+
+  </table>
+
+</div>
+<div class="ListTime">
+  <ul style="width: 924px;">
+    <%for(var i = 0 ;i < day_line.length ; i++) { %>
+    <li><a <%if(day_line[i]._id) { %>
+      href="/agent/travel/intro?id=<%= day_line[i]._id %>"
+      <%} else { %>
+      href="javascript:void(0)"
+      <%}%>
+      class="ListTime_Left <%= day_line[i].price?"timeline_center":"" %>" t="<%= day_line[i].date %>">
+      <b>
+        <%= day_line[i].noyear %>
+        <%= day_line[i].day %></b>
+      <%if(day_line[i].price) { %>
+      <p><%= day_line[i].price %>元</p>
+      <%} %>
+      </a></li>
+    <% } %>
+
+
+    <div class="clear">
+    </div>
+  </ul>
+  <ul style="width: auto;">
+    <li style="width: 100px; position: relative">
+      <a href="#Calendar_Modal" role="button" class="" data-toggle="modal" style=" background: #8b9aa3; color: #fff; ">更多日期</a>
+    </li>
+  </ul>
+  <div class="clear">
+  </div>
+  <div class="line_date">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tbody>
+      <tr class="li_1">
+        <th style="text-align: center">
+          交通
+        </th>
+        <th style="text-align: center">
+          价格
+        </th>
+        <th style="text-align: center">
+          人数
+        </th>
+        <th width="60" style="text-align: center">
+          状态
+        </th>
+        <th width="90" style="text-align: center">
+          操作
+        </th>
+      </tr>
+      <tr class="li_2">
+        <td style="text-align: center">
+
+          <strong style="color: blue">往</strong>：<%=locals.travel._product.go_type%><br>
+          <strong style="color: green">返</strong>：<%=locals.travel._product.back_type%>
+        </td>
+        <td class="line_price" style="text-align: center">
+          成人价:<%=locals.travel._product.adult_price%>元<br/>
+          儿童价:<%=locals.travel._product.child_price%>元
+        </td>
+        <td class="line_ren" style="text-align: center">
+          <%=travel.total %>人
+        </td>
+        <td class="line_state" style="text-align: center">
+
+          <font color="#35D800">
+            <span style="color:green">正常</span></font>
+
+        </td>
+        <td style="text-align: center" class="png_bg">
+          <a href="/order/add?t_id=<%=locals.travel._id%>" class="btn btn-mini btn-primary" target="_blank" >马上预订</a><br/>
+
+          <a href="/printf/travel?id=<%=locals.travel._id%>" class="btn btn-mini btn-primary" target="_blank">导出行程</a>
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="alert alert-info" style="width: 80px;height: 20px;margin: 0px;padding-top: 3px;">
+  <strong style="font-family: '微软雅黑';font-size:14px;text-align: center; ">行程说明</strong>
+</div>
+
+<div>
+  <table class="mytable" style="width: 100%;">
+    <tbody>
+    <%
+    var dataText=['一','二','三','四','五','六','七','八','九','十'];
+    for(var i=0;i<(locals.travel._product.trip).length;i++){%>
+
+    <tr>
+      <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+        第<%=dataText[i]%>天 行程:
+      </td>
+      <td class=" alert alert-info alert-detail">
+        <%-(locals.travel._product.trip)[i]%>
+      </td>
+    </tr>
+    <%}%>
+
+  </table>
+</div>
+
+
+<div style="margin-top:30px; ">
+  <div class="alert alert-info" style="width: 80px;height: 20px;margin: 0px;padding-top: 3px;">
+    <strong style="font-family: '微软雅黑';font-size:14px;text-align: center; ">相关事宜</strong>
+  </div>
+  <div>
+    <table class="mytable" style="width: 100%;">
+      <tbody>
+
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          线路说明:
+        </td>
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.introduce%>
+        </td>
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          包含项目:
+        </td>
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.include%>
+        </td>
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          不包含项目：
+        </td>
+
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.not_include%>
+        </td>
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          儿童安排
+        </td>
+
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.child_plan%>
+        </td>
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          购物安排
+        </td>
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.shopping%>
+        </td>
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          自费项目
+        </td>
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.expensive%>
+        </td>
+
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          赠送项目
+        </td>
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.gift%>
+        </td>
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          注意事项
+        </td>
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.notice%>
+        </td>
+      </tr>
+      <tr>
+        <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+          温馨提示
+        </td>
+        <td class=" alert alert-info alert-detail">
+          <%-locals.travel._product.warns%>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+
+
+</div>
+<div class="form-actions" style="padding-left: 300px;">
+
+  <a class="btn btn-success"
+     onclick="javascript:window.close();">返回</a>
+  <a class="btn btn-success" target="_blank" href="/printf/travel?id=<%=locals.travel._id%>">打印</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<!-- Modal -->
+<div id="Calendar_Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">更多日期</h3>
+  </div>
+  <div class="modal-body" style="height: 300px ;">
+    <div id="Calendar" style="width: 520px;height: 300px ;position: absolute;">
+      <table class="tCal" border="1" cellpadding="2" cellspacing="0" width="100%">
+        <thead>
+        <tr class="lCss">
+          <th>日</th>
+          <th>一</th>
+          <th>二</th>
+          <th>三</th>
+          <th>四</th>
+          <th>五</th>
+          <th>六</th>
+        </tr>
+        </thead>
+        <tbody id="Calendar_list">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+  </div>
+</div>
+<script src="/qcheng.travel_info.js"></script>

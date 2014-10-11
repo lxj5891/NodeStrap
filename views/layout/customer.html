@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>91启程网</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Static & Dynamic Tables"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <% include ../common/ns.core.html %>
+  <script>
+    $(document).ready(function () {
+      initEnv();
+    });
+  </script>
+  <style>
+
+    body {
+      font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    }
+
+  </style>
+</head>
+<body>
+<input id="userId" value="<%=locals.current_user._id%>" type="hidden"/>
+<div class="navbar navbar-inverse">
+<div class="navbar-inner">
+<div class="container-fluid">
+<a class="brand" href="#">
+  <small><i class="icon-leaf"></i> 91启程网</small>
+</a>
+<ul class="nav ace-nav pull-right">
+
+
+
+  <li class="light-blue user-profile">
+    <a class="user-menu dropdown-toggle" href="#" data-toggle="dropdown">
+      <img alt="Jason's Photo" src="/assets/avatars/user.jpg" class="nav-user-photo"/>
+							<span id="user_info">
+								<small>欢迎:</small><%=locals.current_user.name%>
+							</span>
+      <i class="icon-caret-down"></i>
+    </a>
+    <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+      <li><a href="/updatePwd"><i class="icon-cog"></i> 修改密码</a></li>
+      <li><a href="/updateUser"><i class="icon-user"></i> 个人信息</a></li>
+      <li class="divider"></li>
+      <li><a href="/logout"><i class="icon-off"></i>退出</a></li>
+    </ul>
+  </li>
+</ul>
+<!--/.ace-nav-->
+</div>
+<!--/.container-fluid-->
+</div>
+<!--/.navbar-inner-->
+</div>
+
+
+<div class="container-fluid" id="main-container">
+  <div id="sidebar">
+
+    <div id="sidebar-shortcuts" style="display: none;">
+
+      <div id="sidebar-shortcuts-large">
+
+        <button class="btn btn-small btn-success"><i class="icon-signal"></i></button>
+
+        <button class="btn btn-small btn-info"><i class="icon-pencil"></i></button>
+
+        <button class="btn btn-small btn-warning"><i class="icon-group"></i></button>
+
+        <button class="btn btn-small btn-danger"><i class="icon-cogs"></i></button>
+
+      </div>
+
+      <div id="sidebar-shortcuts-mini">
+
+        <span class="btn btn-success"></span>
+
+        <span class="btn btn-info"></span>
+
+        <span class="btn btn-warning"></span>
+
+        <span class="btn btn-danger"></span>
+
+      </div>
+
+    </div>
+    <!-- #sidebar-shortcuts -->
+    <ul class="nav nav-list">
+
+
+      <li class="active">
+
+        <a href="/customer">
+
+          <i class="icon-dashboard"></i>
+
+          <span>启程主页</span>
+
+
+        </a>
+        <div id="nsdialog"></div>
+      </li>
+
+      <li>
+
+        <a href="#" class="dropdown-toggle">
+
+          <i class="icon-globe"></i>
+
+          <span>散客旅游</span>
+
+          <b class="arrow icon-angle-down"></b>
+
+        </a>
+        <ul class="submenu">
+          <li><a href="/customer"><i class="icon-double-angle-right"></i>线路信息</a></li>
+          <li><a href="/customer/orders"><i class="icon-double-angle-right"></i>我的订单</a></li>
+        </ul>
+
+      </li>
+
+    </ul>
+    <!--/.nav-list-->
+    <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+  </div>
+  <!--/#sidebar-->
+  <%- body %>
+</div>
+<!--/.fluid-container#main-container-->
+
+<!--[if IE 7]>
+<script src="/assets/ie/ie7.js"></script>
+<![endif]-->
+</body>
+</html>

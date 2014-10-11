@@ -1,0 +1,47 @@
+{
+  "testdb": "mongodb://localhost/qcheng",
+  "store": {
+    "host": "localhost",
+    "port": 27017,
+    "dbname": "qcheng",
+    "pool": 5
+  },
+  "mail": {
+    "service": "Gmail",
+    "auth": {
+      "user": "smart@gmail.com",
+      "pass": "smart"
+    }
+  },
+
+  "session": {
+    "timeout": 720,// 24 * 30 一个月
+    "secret": "starp.sid",
+    "key": "starp.sid"
+  },
+
+  "cookie": {
+    "timeout": 720,
+    "secret": "starp.sid",
+    "key": "starp.sid"
+  },
+
+  "app": {
+    "tmp": "/tmp",
+    "queue": "true"
+  },
+  "amqp": {
+    "host": "amqp",
+    "post": 5567
+  },
+
+  "auth_cookie_name": "starp.sid",
+  "session_secret": "starp.sid",
+  "admins": {
+    "11": true
+  },
+  "list": {
+    "pageSize": 10
+  }
+
+}

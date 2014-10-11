@@ -1,0 +1,22 @@
+{
+  "name": "SendCloud",
+  "version": "0.1.0",
+  "description": "Send SendCloud Mail",
+  "main": "src/index.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lxj5891/node-sendcloud.git"
+  },
+  "dependencies": {
+  },
+  "keywords": ["mail"],
+  "author": "浩子 <7923495@qq.com>",
+  "license": "MIT"
+}

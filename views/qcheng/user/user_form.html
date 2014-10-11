@@ -1,0 +1,133 @@
+
+<!-- PAGE CONTENT BEGINS HERE -->
+<form id="user_add" action="/api/user/add.json" method="post" class="form-horizontal required-validate"/>
+<input type="hidden" id="role" name="role" value="<%=locals.isAdmin%>">
+<div class="control-group">
+  <label class="control-label">用户名</label>
+
+  <div class="controls">
+    <input id="loginname" class="required" type="text" name="loginname">
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">邮箱</label>
+
+  <div class="controls">
+    <input id="email" class="required" type="text" name="email"/>
+  </div>
+</div>
+<div class="control-group" id="user_pass">
+  <label class="control-label">密码</label>
+
+  <div class="controls">
+    <input id="pass" class="required" type="password" name="pass"/>
+  </div>
+</div>
+
+<div class="control-group">
+  <label  class="control-label">真实姓名</label>
+
+  <div class="controls">
+    <input id="name" class="required"  type="text" name="name"/>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">QQ</label>
+
+  <div class="controls">
+    <input id="qq" class="required" type="text" name="qq"/>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">联系电话</label>
+
+  <div class="controls">
+    <input id="tel" class="required" type="text" name="tel"/>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">选择地区</label>
+
+  <div class="controls" style="float:left; margin:0px 20px 0px 18px;">
+
+    <select name="province" id="province" style="width:100px">
+    </select>
+  </div>
+  <div class="controls" style="float:left; margin:0px 20px 0px 18px;">
+    <select name="city" id="city" style="width:100px">
+
+    </select>
+  </div>
+  <div class="controls" style="float:left; margin:0px 20px 0px 18px;">
+    <select name="area" id="area" style="width:100px">
+
+    </select>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">公司名称</label>
+
+  <div class="controls">
+    <input id="company" class="required" id="company_name" type="text" name="company"/>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">公司标识</label>
+
+  <div class="controls">
+    <input id="company_sign" type="text" name="sign"/>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">公司地址</label>
+
+  <div class="controls">
+    <input id="address" class="required"  type="text" name="address"/>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label">公司介绍</label>
+
+  <div class="controls">
+    <textarea id="des" class="editor" name="des" rows="6" cols="100" tools="simple"></textarea>
+  </div>
+</div>
+  <div id="admin">
+
+<div class="control-group">
+  <label class="control-label">身份</label>
+
+  <div class="controls">
+    <label>
+      <input name="level" type="radio" value="2"/><span class="lbl">加盟商</span>
+    </label>
+
+    <label>
+      <input name="level" type="radio" value="3"/><span class="lbl">散客</span>
+    </label>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label">激活</label>
+
+  <div class="controls">
+    <label>
+      <input name="is_active" type="radio" value="1"/><span class="lbl">激活</span>
+    </label>
+    <label>
+      <input name="is_active" type="radio" value="0"/><span class="lbl">无效</span>
+    </label>
+  </div>
+</div>
+
+  </div>
+
+<div class="form-actions">
+  <button class="btn btn-info" type="button"  onclick="onNsclick('#user_add')" msg="确认提交吗？"><i class="icon-ok"></i>保存</button>
+</div>
+</form>
+
+
+<!-- PAGE CONTENT ENDS HERE -->
+    

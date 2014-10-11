@@ -1,0 +1,60 @@
+<div id="main-content" class="clearfix">
+
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">用户管理</li>
+    </ul>
+    <!--.breadcrumb-->
+  </div>
+  <!--#breadcrumbs-->
+
+
+  <div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1>用户列表</h1>
+    </div>
+    <!--/page-header-->
+    <div class="row-fluid">
+      <!-- PAGE CONTENT BEGINS HERE -->
+      <div class="row-fluid">
+        <div class="span12">
+          <table id="table_bug_report " class="table table-striped table-bordered table-hover nodeStrap-datagrid"
+                 url="/api/user/list.json" page="<%=pageNum%>">
+            <thead>
+            <tr>
+              <th data-options="company">旅游公司</th>
+              <th data-options="name">姓名</th>
+              <th data-options="loginname">登录帐号</th>
+              <th data-options="province">地区</th>
+              <th data-options="tel">电话</th>
+              <th data-options="email">邮箱</th>
+              <th data-options="qq">QQ</th>
+              <th data-options="level">用户类型</th>
+              <th data-url="{ '修改':'/admin/user/edit'}">操作</th>
+            </tr>
+            </thead>
+
+          </table>
+        </div>
+        <!--/span-->
+      </div>
+      <!--/row-->
+
+
+      <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+
+    <div class="nodeStrap-pagination" url="/admin/users">
+    </div>
+
+
+  </div>
+  <!--/#page-content-->
+
+
+</div>
+<!-- #main-content -->
+<!--<script src="/qcheng.channels.js"></script>-->

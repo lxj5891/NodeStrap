@@ -1,0 +1,321 @@
+<div id="main-content" class="clearfix">
+
+<div id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span>
+    </li>
+    <li><a href="#">旅游管理</a> <span class="divider"><i class="icon-angle-right"></i></span></li>
+    <li class="active">产品管理</li>
+  </ul>
+  <!--.breadcrumb-->
+
+
+  <!--#nav-search-->
+</div>
+<!--#breadcrumbs-->
+
+<div id="page-content" class="clearfix">
+
+<div class="page-header position-relative">
+  <h1>修改产品</h1>
+</div>
+<!--/page-header-->
+
+
+<!--test-->
+<!--channels_id: {type: ObjectId, index: true },-->
+
+
+<!--test-->
+<div class="row-fluid">
+<!-- PAGE CONTENT BEGINS HERE -->
+
+
+<form class="form-horizontal" id="product" action="/agent/product/update.json">
+
+<input class="required" type="hidden" id="_id" name="_id" value="<%=product._id%>">
+<div class="control-group">
+  <label class="control-label" for="form-field-select-1">专线列表</label>
+
+  <div class="controls">
+    <select id="form-field-select-1" name="_channel">
+
+      <% if (channel_list && channel_list.length > 0) { %>
+
+      <%
+      var channel=channel_list;
+      for(var i in channel){
+      if(channel[i]._id==product._channel._id)  {
+      %>
+      <option value="<%=channel[i]._id%>" selected><%=channel[i].title%></option>
+      <%} else{%>
+      <option value="<%=channel[i]._id%>" ><%=channel[i].title%></option>
+      <%}%>
+      <%}%>
+      <%}%>
+    </select>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="routename">产品名称</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="routename" name="routename" value="<%=product.routename%>" >
+  </div>
+</div>
+
+
+<div class="control-group">
+  <label class="control-label" for="go_type">去程交通</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="go_type" name="go_type" value="<%=product.go_type%>">
+  </div>
+</div>
+
+
+<div class="control-group">
+  <label class="control-label" for="back_type">返程交通</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="back_type" name="back_type" value="<%=product.go_type%>">
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="days">天数</label>
+
+  <div class="controls">
+    <!--<input type="text" id="days" placeholder="请输入旅行的天数">-->
+
+    <input type="text" class="input-mini" name="days" id="days" />
+
+    <div class="space-6"></div>
+  </div>
+</div>
+
+
+<div class="control-group">
+  <label class="control-label" for="adult_price">成人参考价格</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="adult_price" name="adult_price" value="<%=product.adult_price%>">
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="child_price">儿童参考价格</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="child_price" name="child_price" value="<%=product.child_price%>">
+  </div>
+</div>
+
+
+<!--<div class="control-group">-->
+<!--<label class="control-label" for="total">总人数</label>-->
+
+<!--<div class="controls">-->
+<!--<input type="text" id="total" name="total" placeholder="总人数">-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div class="control-group">
+  <label class="control-label">接送地址</label>
+
+  <div class="controls" id="addiv">
+
+    <%
+    for(var i =0;i<product.address.length; i++){
+    %>
+    <input type="text" name="address" value="<%=product.address[i]%>">
+    <%}%>
+
+
+  </div>
+  <div class="controls" >
+  <button id="addAddressBtn" class="btn btn-small btn-info" type="button"><i class="icon-ok"></i>添加接送地点
+  </button>
+    <button id="delAddressBtn" class="btn btn-small btn-info" type="button"><i class="icon-ok"></i>删除接送地点
+    </button>
+    </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="startAddress">出发地址</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="startAddress" name="startAddress" value="<%=product.startAddress%>">
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="endAddress">到达地址</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="endAddress" name="endAddress" value="<%=product.endAddress%>">
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="staff">接送人员</label>
+
+  <div class="controls">
+    <input class="required" type="text" id="staff" name="staff" value="<%=product.staff%>">
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="introduce">产品说明</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple" type="text" id="introduce" name="introduce"
+            >  <%=product.introduce%></textarea>
+  </div>
+</div>
+
+
+
+  <% if (product && product.trip.length > 0) {
+  for(var i=0;i<product.trip.length;i++){
+  var Format = ["一","二", "三", "四", "五", "六", "七", "八", "九", "十"];
+  %>
+<div class="control-group">
+  <label class="control-label">第<%=Format[i]%>天行程</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"  name="trip" ><%=product.trip[i]%></textarea>
+  </div>
+</div>
+<%}%>
+<%}%>
+<div id="trip">
+
+</div>
+<div class="control-group">
+  <label class="control-label" for="include">包含项目</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"   name="include" id="include"
+              class="span4"><%=product.include%></textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="not_include">不包含项目</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"  name="not_include"
+              id="not_include" class="span4"><%=product.not_include%></textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="child_plan">儿童安排</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"   name="child_plan"
+              id="child_plan" class="span4"><%=product.child_plan%></textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="shopping">购物安排</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"   id="shopping"
+              name="shopping" class="span4"><%=product.shopping%></textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="expensive">自费项目</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"  id="expensive"
+              name="expensive" class="span4"><%=product.expensive%></textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="gift">赠送项目</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple" id="gift" name="gift"
+              class="span4"><%=product.gift%></textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="notice">注意事项</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"   id="notice"
+              name="notice" class="span4"><%=product.notice%></textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="warns">温馨提示</label>
+
+  <div class="controls">
+    <textarea class="editor" rows="6" cols="100" tools="simple"  id="warns" name="warns"
+              class="span4"><%=product.warns%></textarea>
+  </div>
+</div>
+
+
+<div class="form-actions">
+  <button class="btn btn-info" type="button" onclick="onNsclick('#product')" msg="确认提交吗？"><i class="icon-ok"></i>保存
+  </button>
+</div>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+  var dayFormat = ["一","二", "三", "四", "五", "六", "七", "八", "九", "十"]
+
+  $(function(){
+        $("#addAddressBtn").click(function(){
+              $("#addiv").append("  <input type=\"text\" name=\"address\" placeholder=\"接送地址\">");
+
+        });
+    $("#delAddressBtn").click(function(){
+         $("#addiv input").last().remove() ;
+    })
+  })
+
+  $(function () {
+    var dayNumber="<%=product.days%>";
+    $('#days').ace_spinner({value: dayNumber, min: 1, max: 10, step: 1, btn_up_class: 'btn-info', btn_down_class: 'btn-info'})
+      .on('change', function () {
+        var day = this.value;
+        $("#trip").empty();
+        for (var i = dayNumber-1; i < day - 1; i++) {
+          $("#trip").append("<div class='control-group'><label class='control-label' >第" + dayFormat[i+1] + "天行程</label><div class='controls'> <textarea  id='tripEdit_" + i + "'  class='editor'   rows='6' cols='100' tools='simple' placeholder='请简要输入行程' name='trip' ></textarea></div> </div>");
+          if ($.fn.xheditor) {
+            var $this = $("#tripEdit_" + i);
+            var op = {html5Upload: false, skin: 'vista', tools: $this.attr("tools") || 'full'};
+            var upAttrs = [
+              ["upLinkUrl", "upLinkExt", "zip,rar,txt"],
+              ["upImgUrl", "upImgExt", "jpg,jpeg,gif,png"],
+              ["upFlashUrl", "upFlashExt", "swf"],
+              ["upMediaUrl", "upMediaExt", "avi"]
+            ];
+
+            $(upAttrs).each(function (i) {
+              var urlAttr = upAttrs[i][0];
+              var extAttr = upAttrs[i][1];
+
+              if ($this.attr(urlAttr)) {
+                op[urlAttr] = $this.attr(urlAttr);
+                op[extAttr] = $this.attr(extAttr) || upAttrs[i][2];
+              }
+            });
+
+            $this.xheditor(op);
+          }
+        }
+
+
+      });
+  })
+
+</script>

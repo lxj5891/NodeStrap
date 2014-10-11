@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8"/>
+  <title>91启程网</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- @todo: fill with your company info or remove -->
+  <meta name="description" content=""/>
+  <meta name="author" content="Themelize.me"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <%include index_header.html%>
+
+
+</head>
+<body class="page page-index">
+<%include index_nav.html%>
+
+
+<!--test-->
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <!-- Secondary features -->
+      <div class="span10">
+        <section class="flexslider-wrapper ">
+          <div class="flexslider" data-slidernav="auto" data-transition="slide">
+            <!--The Slides-->
+            <div class="slides">
+              <!--Slide #2 straight image 1170px wide x 390px high-->
+              <div class="slide row-fluid">
+                <img src="/images/initpintu11.jpg"
+                     alt="Slide 2"/></div>
+              <div class="slide row-fluid">
+                <img src="/images/initpintu12.jpg"
+                     alt="Slide 3"/></div>
+              <div class="slide row-fluid">
+                <img src="/images/initpintu13.jpg"
+                     alt="Slide 4"/></div>
+              <!--Slide #3 & so on below-->
+
+            </div>
+          </div>
+        </section>
+
+
+        <h2 class="title-divider"><span>国内专线</span></h2>
+
+        <ul class="thumbnails" style="margin-left:0px; ">
+          <% if (locals.channel_list && channel_list.length > 0) { %>
+
+          <%
+          var channel = channel_list;
+          for(var i in channel){
+          %>
+          <li class="span2">
+            <a style="width:70%" data="<%=channel[i]._id%>" href="#" class="btn btn-default btn-primary"><%=
+              channel[i].title %></a>
+          </li>
+
+          <%}%>
+
+          <% } %>
+
+        </ul>
+
+      </div>
+
+      <!--Contact block-->
+      <div class="span2">
+        <h3 class="title-divider"><span>登录</span></h3>
+
+        <form action="/user/signin"
+              method="post"
+              class="required-validate form_contact"
+              onsubmit="login()"/>
+
+        <input type='hidden' id="user_action" name='user_action' value='login'/>
+
+        <div class="control-group">
+          <label class="control-label">用户名 </label>
+
+          <div class="controls">
+            <input id="loginname" type="text" name="loginname" style="width: 150px;"/>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">密码</label>
+
+          <div class="controls">
+            <input id="pass" type="password" name="pass" style="width: 150px;"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class='alert alert-error alert-block' id="error" style="display: none;">
+          </div>
+        </div>
+        <a href="/signup" class="btn btn-primary ">注册</a>
+        <button type="button" class="btn btn-primary" id="sub">登录</button>
+
+        </form>
+        <h3 class="title-divider"><span>新闻动态</span></h3>
+
+        <ul class="big-list tags">
+
+          <% if (locals.new_list && new_list.length > 0) { %>
+          <%
+          var news = new_list;
+          for(var i in news){
+          %>
+          <li><a target="_blank" href="/news?nid=<%= news[i]._id%>" style="font-size: 14px">
+            <%if(news[i].title.length > 8) {%>
+              <%= news[i].title.substring(0,7) %>
+            <% }else{%>
+              <%= news[i].title%>
+            <% }%>
+          </a></li>
+          <%}%>
+
+
+          <% } else { %>
+          <li>无新闻</li>
+          <% } %>
+
+        </ul>
+      </div>
+    </div>
+    <!-- Services -->
+
+    <!--Pricing Table-->
+
+
+    <!--Customer testimonial-->
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<%include index_footer.html%>
+<!--Scripts -->
+<script src="/webui1/js/jquery.js"></script>
+
+<!-- @todo: remove unused Javascript for better performance -->
+<script src="/webui1/js/bootstrap-transition.js"></script>
+<script src="/webui1/js/bootstrap-alert.js"></script>
+<script src="/webui1/js/bootstrap-affix.js"></script>
+<script src="/webui1/js/bootstrap-modal.js"></script>
+<script src="/webui1/js/bootstrap-dropdown.js"></script>
+<script src="/webui1/js/bootstrap-scrollspy.js"></script>
+<script src="/webui1/js/bootstrap-tab.js"></script>
+<script src="/webui1/js/bootstrap-tooltip.js"></script>
+<script src="/webui1/js/bootstrap-popover.js"></script>
+<script src="/webui1/js/bootstrap-button.js"></script>
+<script src="/webui1/js/bootstrap-collapse.js"></script>
+<script src="/webui1/js/bootstrap-carousel.js"></script>
+<script src="/webui1/js/bootstrap-typeahead.js"></script>
+
+<!--Non-Bootstrap JS-->
+<script src="/webui1/js/jquery.quicksand.js"></script>
+<script src="/webui1/js/jquery.flexslider-min.js"></script>
+
+<!--Custom scripts mainly used to trigger libraries -->
+<script src="/webui1/js/script.js"></script>
+
+
+<script type="text/javascript">
+  function login() {
+    $("#error").empty().css("display", "block")
+      .append("   <img src='/images/loading.gif'/>登陆中。");
+    var loginname = $("#loginname").val();
+    var pass = $("#pass").val();
+//    var crsf = $("#_csrf").val();
+    var user_action = $("#user_action").val();
+    $.ajax({
+        type: 'POST',
+        url: "/api/user/login.json",
+        data: {
+//          "_csrf": crsf,
+          loginname: loginname,
+          pass: pass,
+          user_action: user_action
+        },
+        dataType: "json",
+        cache: false,
+        success: function (msg) {
+          if (msg.status != 200) {
+            if(!msg.msg){
+              $("#error").empty().css("display", "block").append("账号密码错误");
+            }else{
+              $("#error").empty().css("display", "block").append(msg.msg);
+              alertify.alert(msg.msg);
+            }
+
+            return;
+          }
+          if (msg.level == 1) {
+//            window.location.href = '/admin/travels';
+            window.location.href = '/admin';
+          } else if (msg.level == 2) {
+            window.location.href = '/agent';
+          } else {
+            window.location.href = '/customer';
+          }
+
+        }
+
+      }
+    )
+
+
+  }
+  $(function () {
+    document.onkeydown = function (e) {
+      var ev = document.all ? window.event : e;
+      if (ev.keyCode == 13) {
+        login();
+      }
+    }
+
+    $("#sub").click(login);
+  });
+</script>
+
+
+
+
+</body>
+</html>

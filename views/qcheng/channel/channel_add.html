@@ -1,0 +1,57 @@
+<div id="main-content" class="clearfix">
+
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">添加旅游专线</li>
+    </ul>
+    <!--.breadcrumb-->
+  </div>
+  <!--#breadcrumbs-->
+
+
+  <div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1>添加旅游专线</h1>
+    </div>
+    <form class="form-horizontal required-validate" id="test" action="/api/admin/channel/add.json" method="post">
+
+
+      <div class="control-group">
+        <label class="control-label" for="form-field-select-1">用户名称</label>
+
+        <div class="controls">
+          <select id="form-field-select-1" name="user_id">
+
+            <% if (user_list && user_list.length > 0) { %>
+            <option value="">请选择用户</option>
+            <%
+            var user=user_list;
+            for(var i in user){
+            %>
+            <option value="<%=user[i]._id%>"><%=user[i].loginname%></option>
+            <%}%>
+            <%}%>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="form-field-2">专线名称</label>
+
+        <div class="controls">
+          <input class="required" type="text" id="form-field-2" name="title" placeholder="请输入专线">
+
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-info" type="button" onclick="onNsclick('#test')" msg="确认提交吗？"><i class="icon-ok"></i>保存
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

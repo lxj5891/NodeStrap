@@ -1,0 +1,45 @@
+<div id="main-content" class="clearfix">
+
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">修改用户密码</li>
+    </ul>
+    <!--.breadcrumb-->
+  </div>
+  <!--#breadcrumbs-->
+
+
+  <div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1>修改用户密码</h1>
+    </div>
+    <form class="form-horizontal required-validate" id="test" action="/updatePassword.json" method="post">
+
+      <div class="control-group">
+        <label class="control-label" for="form-field-2">新密码：</label>
+
+        <div class="controls">
+          <input class="required" type="text" id="form-field-2" name="pass" placeholder="新密码">
+
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="form-field-3">确认新密码：</label>
+
+        <div class="controls">
+          <input class="required" type="text" id="form-field-3" name="comPass" placeholder="确认新密码">
+
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-info" type="button" onclick="onNsclick('#test')" msg="确认提交吗？"><i class="icon-ok"></i>保存
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

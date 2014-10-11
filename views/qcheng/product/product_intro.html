@@ -1,0 +1,230 @@
+<style>
+  .travelInfo {
+    font-size: 14px;
+    font-family: "microsoft yahei";
+    width: 80%;
+  }
+
+  .mytable {
+    border: 1px solid;
+
+  }
+
+  .alert-success {
+    background: #f4f4f4 !important;
+    color: #000000;
+  }
+
+  .alert-detail {
+    background: #ffffff !important;
+    color: #000000;
+  }
+
+</style>
+
+<div id="main-content" class="clearfix">
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span>
+      </li>
+      <li><a href="#">旅游管理</a> <span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">旅游信息</li>
+    </ul>
+
+
+</div>
+<div class="container-fluid">
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title">
+
+
+          <div class="buttons">
+          </div>
+        </div>
+
+
+        <div class="widget-content">
+
+          <div class="invoice-content alert alert-info" style="padding-top: 0px">
+
+            <h3 style="font-family: '微软雅黑';width: 100% ;text-align: center;"><%=locals.product.routename%></h3>
+
+            <table class="travelInfo">
+
+              <tr>
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">出发: </a>
+                     </span></td>
+                <td ><span><%=locals.product.startAddress%></span></td>
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">成人价格: </a></span></td>
+                <td ><span><%=locals.product.adult_price%></span></td>
+
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">去程交通: </a></span></td>
+                <td ><span><%=locals.product.go_type%></span></td>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">抵达:</a>
+                     </span></td>
+                <td ><span><%=locals.product.endAddress%></span></td>
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">儿童价格:</a></span></td>
+                <td ><span><%=locals.product.child_price%></span></td>
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">返程交通:</a></span></td>
+                <td ><span><%=locals.product.back_type%></span></td>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">送团人:</a></span></td>
+                <td ><span><%=locals.product.staff%></span></td>
+                </td>
+                <td style="text-align: right"><span><a href="javascript:void(0);"
+                                                       style="color:#000000;">旅游天数:</a></span></td>
+                <td ><span><%=locals.product.days%>天</span></td>
+
+              </tr>
+            </table>
+
+          </div>
+
+          <div class="alert alert-info" style="width: 80px;height: 20px;margin: 0px;padding-top: 3px;">
+            <strong style="font-family: '微软雅黑';font-size:14px;text-align: center; ">行程说明</strong>
+          </div>
+
+          <div>
+            <table class="mytable" style="width: 100%;">
+              <tbody>
+              <%
+              var dataText=['一','二','三','四','五','六','七','八','九','十'];
+              for(var i=0;i<(locals.product.trip).length;i++){%>
+
+              <tr>
+                <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                  第<%=dataText[i]%>天 行程:
+                </td>
+                <td class=" alert alert-info alert-detail">
+                  <%-(locals.product.trip)[i]%>
+                </td>
+              </tr>
+              <%}%>
+
+            </table>
+          </div>
+
+
+          <div style="margin-top:30px; ">
+            <div class="alert alert-info" style="width: 80px;height: 20px;margin: 0px;padding-top: 3px;">
+              <strong style="font-family: '微软雅黑';font-size:14px;text-align: center; ">相关事宜</strong>
+            </div>
+            <div>
+              <table class="mytable" style="width: 100%;">
+                <tbody>
+
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    线路说明:
+                  </td>
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.introduce%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    包含项目:
+                  </td>
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.include%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    不包含项目：
+                  </td>
+
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.not_include%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    儿童安排
+                  </td>
+
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.child_plan%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    购物安排
+                  </td>
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.shopping%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    自费项目
+                  </td>
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.expensive%>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    赠送项目
+                  </td>
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.gift%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    注意事项
+                  </td>
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.notice%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="80px" style="text-align: center;font-size:14px;" class=" alert alert-success">
+                    温馨提示
+                  </td>
+                  <td class=" alert alert-info alert-detail">
+                    <%-locals.product.warns%>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="invoice-to" style="width: 100%;">
+          <center>
+            <a class="btn btn-success"
+               onclick="javascript:window.close();">返回</a>
+            <!--<a class="btn btn-success"-->
+              <!--href="javascript: void(0);">修改</a>-->
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

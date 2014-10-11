@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<title></title>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<style type="text/css" media="all">
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 9pt;
+  line-height: 150%;
+  text-align: center;
+  background: #EEE;
+}
+
+body {
+  font-family: arial, sans-serif;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+ul, ol, li, dl, dt, dd {
+  border: 0;
+}
+
+ul, li {
+  list-style: none;
+  list-style-type: none;
+}
+
+a:link, a:visited, a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.clearfix:after {
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  content: ".";
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+  /* Hides from IE-mac \*/
+* html .clearfix {
+  height: 1%;
+}
+
+.clearfix {
+  display: block;
+}
+
+  /* End hide from IE-mac */
+#printBtn {
+  background: #FF9;
+  border-bottom: 1px solid #999;
+  padding: 3px 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#wrapper {
+  width: 190mm;
+  _width: 215mm;
+  margin: 0 auto;
+  text-align: left;
+  background: white;
+  padding: 10mm 5mm 10mm 5mm;
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  border-right: 4px solid #333;
+  border-bottom: 4px solid #333;
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=5);
+}
+
+p {
+  margin-bottom: 1mm;
+}
+
+h1 {
+  font-size: 12pt;
+  margin-bottom: 3mm;
+}
+
+h2 {
+  font-size: 10pt;
+}
+
+.route_view_module {
+  margin: 5px 5px 5px 5px;
+  float: left;
+  text-align: center;
+  height: 110px;
+}
+
+.route_view_module img {
+  padding: 2px;
+  margin-bottom: 3px;
+  border: solid 1px #999;
+}
+
+.route_view_module .placename {
+  text-align: center;
+}
+
+table {
+  /* table-layout: fixed;*/
+  border-collapse: collapse;
+}
+
+td {
+  padding: 2px;
+  font-size: 9pt;
+  height: 18px;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+th {
+  background: #CCC;
+  font-weight: bold;
+  border: 1px solid #999;
+  padding: 1mm;
+  font-size: 9pt;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.noTable td {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.fb {
+  font-weight: bold;
+}
+
+.input_textarea {
+  font-weight: normal;
+}
+
+.input_printf {
+  width: 100%;
+  line-height: 25px;
+  display: block;
+}
+
+.input_printf b {
+  font-size: 18px;
+  color: red;
+}
+
+.input_printf2 {
+  width: 75px;
+  line-height: 25px;
+  display: block;
+}
+
+.input_printf3 {
+  width: 100%;
+  line-height: 25px;
+  display: block;
+}
+
+.input_printf4 {
+  width: 100%;
+  line-height: 25px;
+  display: block;
+}
+
+.input_printf:hover, .input_printf2:hover, .input_printf3:hover, .input_printf4:hover, .input_textarea:hover {
+  cursor: pointer;
+  background: #ffc;
+}
+
+body, td, th {
+  font-size: 9pt;
+  color: Black;
+}
+
+img {
+  border: 0;
+}
+
+.space {
+  margin-top: 10px;
+}
+
+.item-list th {
+  white-space: nowrap;
+}
+
+.item-list td {
+  padding: 2px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.pop-out, .pop-out-2 {
+  font-size: 14px;
+  font-weight: bold;
+}
+</style>
+<style type="text/css" media="print">
+  #printBtn {
+    display: none;
+  }
+
+  .printBtn {
+    display: none;
+  }
+
+  #wrapper {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .noprint {
+    display: none;
+  }
+
+  input {
+    border: 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="printBtn">
+  <a href="#" onclick="javascript:window.print();return false;">[打印本页]</a> <a href="#"
+                                                                              onclick="javascript:window.close();">[关闭窗口]</a>&nbsp;
+
+</div>
+<div id="wrapper" style="padding-left: 10px;">
+
+
+  <table width="732" align="center" border="1" cellspacing="0" cellpadding="2" bordercolor="#000000"
+         style="border-collapse: collapse">
+    <tr>
+      <td colspan="6" align="center">
+        <b>
+          <%=locals.travelInfo._product.routename %></b>
+      </td>
+    </tr>
+    <tr>
+      <td width="80" align="right">
+        团 号：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo.travel_code %>
+      </td>
+      <td width="80" align="right">
+        旅游天数：
+      </td>
+      <td colspan="3" align="left">
+        <%=locals.travelInfo._product.days %>
+      </td>
+    </tr>
+    <tr>
+      <td width="80" align="right">
+        出发日期：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo.traveldate %>
+      </td>
+      <td width="80" align="right">
+        出发交通：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo._product.go_type %>
+      </td>
+      <td width="80" align="right">
+        出发地：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo._product.startAddress %>
+        -<%=locals.travelInfo._product.endAddress %>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="80" align="right">
+        返程日期：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo.finish_time %>
+      </td>
+      <td width="80" align="right">
+        返程交通：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo._product.back_type %>
+      </td>
+      <td align="right">
+        是否接送：
+      </td>
+      <td align="left">
+        接送
+      </td>
+    </tr>
+    <tr>
+      <td width="80" align="right">
+        集合时间及地点：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo.pickup_time %>
+      </td>
+    </tr>
+    <tr>
+      <td width="80" align="right">
+        送团电话：
+      </td>
+      <td width="200" align="left">
+        <%=locals.travelInfo._product.staff %>
+      </td>
+      <td width="80" align="right">
+        联系人 :
+      </td>
+      <td width="200" align="left">
+        <%=locals.order.user_name %>
+      </td>
+      <td width="80" align="right">
+        联系人电话:
+      </td>
+      <td width="200" align="left">
+        <%=locals.order.user_tel %>
+      </td>
+
+    </tr>
+    <tr>
+      <td width="80" align="right">
+        成人数
+      </td>
+      <td width="200" align="left">
+        <%=locals.order.adult_count %>
+      </td>
+
+      <td width="80" align="right">
+        儿童数
+      </td>
+      <td width="200" align="left" colspan="3">
+        <%=locals.order.child_count %>
+      </td>
+    </tr>
+  </table>
+  <p style="text-align: center;">
+
+    <strong><span class="input_printf">成人价格：<b><%=locals.travelInfo.adult_resultprices %></b>元/人&nbsp;&nbsp;&nbsp;小孩价格：<b><%=locals.travelInfo.child_resultprices
+      %></b>元/人</span></strong></p>
+
+
+  <table width="732" align="center" border="1" cellspacing="0" cellpadding="2" bordercolor="#000000">
+    <tr>
+      <td width="50" style='background: #CCCCCC;'>
+        姓名
+      </td>
+      <td style='background: #CCCCCC;' width="20">
+        性别
+      </td>
+      <td style='background: #CCCCCC;' width="20">
+        类型
+      </td>
+      <td style='background: #CCCCCC;' width="20">
+        手机
+      </td>
+      <td style='background: #CCCCCC;' width="100">
+        证件号
+      </td>
+      <td style='background: #CCCCCC;' width="100">
+        备注
+      </td>
+    </tr>
+    <% if (locals.order.user_list && locals.order.user_list.length > 0) {
+
+    for(var i = 0 ;i < locals.order.user_list.length;i++ ){
+    var _user= locals.order.user_list[i];
+    %>
+
+    <tr>
+      <td><%= _user.name %></td>
+      <td><%= _user.sex %></td>
+      <td><%= _user.age_type %></td>
+      <td><%= _user.tel %></td>
+      <td><%= _user.id %></td>
+      <td><%= _user.tips %></td>
+    </tr>
+
+    <% }%>
+    <% } %>
+
+  </table>
+</div>
+
+</body>
+</html>

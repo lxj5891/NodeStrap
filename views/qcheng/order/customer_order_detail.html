@@ -1,0 +1,39 @@
+<input name="order_id" type="hidden" value="<%=order_id%>">
+
+<div id="main-content" class="clearfix">
+
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">新建订单</li>
+    </ul>
+    <!--.breadcrumb-->
+  </div>
+  <!--#breadcrumbs-->
+
+
+  <div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1>新建订单</h1>
+    </div>
+    <!--/page-header-->
+
+    <div class="row-fluid">
+      <div class="span12">
+        <% include common_order_detail.html %>
+        <div class="">
+          <button id="cancelOrderBtn" data="<%=order_id%>" class="btn btn-primary">取消订单</button>
+        </div>
+        </form>
+      </div>
+      <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+    <!--/row-->
+
+  </div>
+</div>
+<script type="text/javascript" language="javascript" src="/common.order.js"></script>
+
+<script type="text/javascript" language="javascript" src="/customer.order.js"></script>

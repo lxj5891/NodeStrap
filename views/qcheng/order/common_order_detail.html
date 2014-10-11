@@ -1,0 +1,169 @@
+
+      <form id="order_add" action="/api/order/add.json" method="post" class="required-validate form-horizontal"
+            onsubmit="return false;"/>
+      <input type='hidden' id="travel_id" name='travel_id' value='<%=travel_id%>'/>
+      <input type='hidden' id="amount" name="amount" value="0"/>
+      <input type='hidden' id="adult_price" name="adult_price" value=""/>
+      <input type='hidden' id='child_price' name='child_price' value=""/>
+
+      <div class="widget-box">
+
+        <div class="widget-title">
+          <h5>线路：<span id="travel_product_routename">老毕老毕老毕</span></h5>
+        </div>
+        <div class="widget-content nopadding">
+          <table width="100%">
+            <tr>
+              <td width="150px" style="background: #f3f3f3"><label class="control-label tb_title">团号</label></td>
+              <td>
+                <label class="control-label tb_content" id="travel_code">
+                </label>
+              </td>
+              <td width="150px" style="background: #f3f3f3"><label class="control-label tb_title">旅游天数</label></td>
+              <td>
+                <label class="control-label tb_content" id="travel_product_days">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #f3f3f3"><label class="control-label tb_title">出发日期</label></td>
+              <td>
+                <label class="control-label tb_content" id="travel_traveldate"></label>
+              </td>
+              <td style="background: #f3f3f3"><label class="control-label tb_title">返回日期</label></td>
+              <td>
+                <label class="control-label tb_content" id="travel_finish_time">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #f3f3f3"><label class="control-label tb_title">去程交通</label></td>
+              <td>
+                <label class="control-label tb_content" id="travel_product_go_type">
+                </label>
+              </td>
+              <td style="background: #f3f3f3"><label class="control-label tb_title">返程交通</label></td>
+              <td>
+                <label class="control-label tb_content" id="travel_product_back_type">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #f3f3f3"><label class="control-label  tb_title">门市价格</label></td>
+              <td>
+                <label class="control-label tb_content">
+                  成人价：<span id="travel_product_adult_price"></span>元/人
+                <br>儿童价： <span id="travel_product_child_price"></span>元/人
+                </label>
+              </td>
+              <td style="background: #f3f3f3"><label class="control-label tb_title">结算价格</label></td>
+              <td>
+                <label class="control-label tb_content">
+                  成人价：<span id="travel_adult_resultprices"></span>元/人<br>儿童价：<span id="travel_child_resultprices"></span>元/人
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td><h5>旅客信息</h5></td>
+            </tr>
+            <tr>
+              <td width="150px" style="background: #f3f3f3"><label class="control-label">剩余人数</label></td>
+              <td>
+                <label class="control-label">
+                  <span id="travel_elses"></span>
+                </label>
+              </td>
+              <td width="150px" style="background: #f3f3f3"><label class="control-label">总价</label></td>
+              <td>
+                <label id="amount_d" class="control-label">
+                  <span id="order_amount">0</span>
+                </label>
+              </td>
+
+            </tr>
+            <tr>
+              <td style="background: #f3f3f3"><label class="control-label">成人数</label></td>
+              <td>
+                <select name="adult_count" id="c_adult" onchange="change_adult_count();">
+                  <option value="0" selected="">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </td>
+              <td style="background: #f3f3f3"><label class="control-label">儿童人数</label></td>
+              <td>
+                <select name="child_count" id='c_child' onchange="change_child_count();">
+                  <option value="0" selected="">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #f3f3f3"><label class="control-label">联系人姓名</label></td>
+              <td>
+                <input class="required" name="name" type="text" id="name"/>
+              </td>
+              <td style="background: #f3f3f3"><label class="control-label">联系人手机</label></td>
+              <td>
+                <input class="required" name="tel" type="text" id="tel"/>
+              </td>
+            </tr>
+            <tr>
+              <td style="background: #f3f3f3"><label class="control-label">订单备注</label></td>
+              <td colspan="3">
+                <textarea class="required" name="tips" id="tips"></textarea>
+              </td>
+
+            </tr>
+          </table>
+        </div>
+
+
+        <div class="widget-title">
+          <h5>用户详细信息</h5>
+        </div>
+
+        <div class="widget-content nopadding">
+
+
+          <table border="1" cellspacing="1" class="order_list" id="MingDangTable">
+            <tbody>
+            <tr>
+              <th width="74">
+                姓名
+              </th>
+              <th width="40">
+                性别
+              </th>
+              <th width="40">
+                类型
+              </th>
+              <th width="110">
+                手机
+              </th>
+              <th width="150">
+                证件号
+              </th>
+              <th>
+                备注
+              </th>
+            </tr>
+            </tbody>
+            <tbody id="orderUserCollection">
+
+            </tbody>
+          </table>
+
+        </div>
+
+
+      </div>

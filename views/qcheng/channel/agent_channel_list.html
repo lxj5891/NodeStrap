@@ -1,0 +1,189 @@
+<input type="hidden" value="<%=current_user._id%>" name="user_id"/>
+<input id="channel_id" class="required" type="hidden" name="channel_id" value=""/>
+<div id="main-content" class="clearfix">
+
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i><a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li><a href="#">旅游管理</a> <span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">我的专线</li>
+    </ul>
+    <!--.breadcrumb-->
+  </div>
+  <!--#breadcrumbs-->
+
+
+  <div id="page-content" class="clearfix">
+    <!--/page-header-->
+    <div class="row-fluid">
+      <div class="alert alert-info" id="area_channel_list">
+        读取中。。
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span8">
+        <div class="well">
+          <h5 class="blue">供应商家:<span id="user_company">梦创</span></h5>
+        </div>
+      </div>
+      <div class="span4">
+        <div class="tabbable tabs-left">
+          <ul class="nav nav-tabs" id="myTab3">
+            <li class="active"><a data-toggle="tab" href="#detail1"><i class="pink icon-dashboard bigger-110"></i>在线客服
+            </a></li>
+            <li><a data-toggle="tab" href="#detail2"><i class="blue icon-user bigger-110"></i>联系方式</a></li>
+            <li><a data-toggle="tab" href="#detail3"><span class="badge badge-success badge-icon"><i
+              class="icon-caret-right"></i></span>商家介绍</a></li>
+            <li><a data-toggle="tab" href="#detail4"><span class="badge badge-success badge-icon"><i
+              class="icon-caret-right"></i></span>银行帐号</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="detail1" class="tab-pane in active">
+              <p>
+
+              </p>
+            </div>
+            <div id="detail2" class="tab-pane">
+              <div id="tel_list">
+              </div>
+            </div>
+            <div id="detail3" class="tab-pane">
+              <p>简介：<br/><span id="user_des"></span></p>
+            </div>
+            <div id="detail4" class="tab-pane">
+              <p id="account_list">
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <div class="form-actions">
+        <button class="btn btn-info" type="button"><i class="icon-ok"></i><span id="detail_qq">管理客服</span></button>
+        <!--<button class="btn btn-info" type="button"><i class="icon-ok"></i><span id="detail_tel">管理联系方式</span></button>-->
+        <button class="btn btn-info" type="button"><i class="icon-ok"></i><span id="detail_account">管理银行帐号</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PAGE CONTENT BEGINS HERE -->
+
+    <!--/row-->
+
+
+  </div>
+
+
+</div>
+<!--/#page-content-->
+
+</div>
+<!-- Modal -->
+<div id="modal_set_qq" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">添加在线客服</h3>
+  </div>
+  <div class="modal-body">
+    <form id="from_qq_add" action="/agent/channel/qq/add.json" method="post" class="required-validate form-horizontal"/>
+    <input class="required" type="hidden" id="channel_qq_id" name="channel_id"/>
+
+
+    <div class="control-group">
+      <label class="control-label">姓名</label>
+
+      <div class="controls">
+        <input class="required" id="qq_name" type="text" name="cname"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">QQ号</label>
+
+      <div class="controls">
+        <input class="required" id="qq_no" type="text" name="cqq"/>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <button onclick="addQQ()" class="btn btn-primary">保存</button>
+  </div>
+</div>
+
+
+<div id="modal_set_tel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>添加联系电话</h3>
+  </div>
+  <div class="modal-body">
+    <form id="form_tel_add" action="/agent/channel/tel/add.json" method="post"
+          class="required-validate form-horizontal"/>
+    <input class="required" type="hidden" id="channel_tel_id" name="channel_id"/>
+
+    <div class="control-group">
+      <label class="control-label">姓名</label>
+
+      <div class="controls">
+        <input class="required" id="tel_name" type="text" name="name"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">电话</label>
+
+      <div class="controls">
+        <input class="required" id="tel_no" type="text" name="ctel"/>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <button onclick="addTel();" class="btn btn-primary">保存</button>
+  </div>
+</div>
+
+
+<div id="modal_set_account" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>添加银行帐号</h3>
+  </div>
+  <div class="modal-body">
+    <form id="form_account_add" action="/agent/channel/account/add.json" method="post"
+          class="required-validate form-horizontal"/>
+    <input class="required" type="hidden" id="channel_account_id" name="channel_id"/>
+
+    <div class="control-group">
+      <label class="control-label">姓名</label>
+
+      <div class="controls">
+        <input class="required" id="account_name" type="text" name="name"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">帐号</label>
+
+      <div class="controls">
+        <input class="required" id="account_no" type="text" name="accno"/>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <button onclick="addAccount()" class="btn btn-primary">保存</button>
+  </div>
+</div>
+
+<!-- #main-content -->
+<script src="/agent.channels.js"></script>
+

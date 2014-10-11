@@ -1,0 +1,12 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "absolute": false,
+      "filename": "logs/starp.log",
+      "maxLogSize": 10248,
+      "backups": 10,
+      "category": "absolute-logger"
+    }
+  ]
+}

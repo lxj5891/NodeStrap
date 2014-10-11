@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8"/>
+    <title>91启程网</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- @todo: fill with your company info or remove -->
+    <meta name="description" content=""/>
+    <meta name="author" content="Themelize.me"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="/webui1/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/webui1/css/responsive.css" rel="stylesheet"/>
+
+    <!-- Flexslider -->
+    <link href="/webui1/css/flexslider.css" rel="stylesheet"/>
+
+    <!-- Theme style -->
+    <link href="/webui1/css/theme-style.css" rel="stylesheet"/>
+
+    <!--Your custom colour override-->
+    <link href="#" id="colour-scheme" rel="stylesheet"/>
+
+    <!-- Your custom override -->
+    <link href="/webui1/css/custom-style.css" rel="stylesheet"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="/webui1/js/html5.js"></script>
+
+
+
+
+    <![endif]-->
+
+    <!-- Le fav and touch icons - @todo: fill with your icons or remove -->
+    <link rel="shortcut icon" href="/webui1/img/icons/favicon.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/webui1/img/icons/114x114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/webui1/img/icons/72x72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="/webui1/img/icons/default.png"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti' rel='stylesheet'
+          type='text/css'/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+</head>
+
+<body class="page page-index">
+<div id="navigation" class="wrapper">
+    <div class="navbar  navbar-static-top">
+
+        <!--Header & Branding region-->
+        <div class="header">
+            <div class="header-inner container">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <!--branding/logo-->
+                        <a class="brand" href="index.html" title="Home">
+                            <h1><span>91</span>启程网<span></span></h1>
+                        </a>
+
+                    </div>
+
+                    <!--header rightside-->
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="navbar-inner">
+                <!--mobile collapse menu button-->
+                <a class="btn btn-navbar pull-left" data-toggle="collapse" data-target=".nav-collapse"> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span> </a>
+                <!--user menu-->
+
+                <!--everything within this div is collapsed on mobile-->
+                <div class="nav-collapse collapse">
+
+                    <!--main navigation-->
+                    <ul class="nav" id="main-menu">
+                        <li class="home-link"><a href="index.html"><i class="icon-home hidden-phone"></i><span
+                                class="visible-phone">Home</span></a></li>
+                        <li><a href="/" class="menu-item">首页</a></li>
+                        <li><a href="/join" class="menu-item">加盟说明</a></li>
+                        <li><a href="/" class="menu-item">联系我们</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="login"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <h3 id="myModalLabel"><span>用户登陆</span></h3>
+    </div>
+    <div class="modal-body" style="margin: 0 auto;width: 300px;">
+        <form action="/user/signin"
+              method="post"
+              class="required-validate form_contact"
+              onsubmit="return validateCallback(this,$WEBSITE.didLoginCallback,$WEBSITE.createDate);"/>
+
+        <input type='hidden' name='user_action' value='login'/>
+
+        <div class="control-group">
+            <label class="control-label">用户名 </label>
+
+            <div class="controls" >
+                <input id="loginname" type="text" name="loginname"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">密码</label>
+
+            <div class="controls" >
+                <input id="pass" type="password" name="pass"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+                <div class='alert alert-error alert-block' id="error" style="display: none;">
+               </div>
+        </div>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        <button type="button"  class="btn btn-primary" id="sub">提交</button>
+
+    </div>
+
+
+    </form>
+
+</div>
+
+
+
+<div class="hero" id="highlighted" style="display: none">
+    <div class="inner">
+        <!--Flexslider Showshow-->
+        <section class="flexslider-wrapper container">
+            <div class="flexslider" data-slidernav="auto" data-transition="slide">
+                <!--The Slides-->
+                <div class="slides">
+
+                    <!--Slide #1 with caption-->
+                    <div class="slide row-fluid">
+                        <div class="span7"><img src="img/slides/slide1.png" alt="Slide 1"/></div>
+                        <div class="span5 caption">
+                            <h2>91启程网 上线</h2>
+                            <h4>牢记网址：<a href="http://www.91qcheng.com">www.91qcheng.com</a></h4>
+
+                            <a href="/signup" class="btn btn-large btn-primary">现在注册</a></div>
+                    </div>
+
+                    <!--Slide #2 straight image 1170px wide x 390px high-->
+                    <div class="slide row-fluid"><img
+                            src="http://www.91qcheng.com/upload/51e8d6c5c6b314304e000001/1376205816463_201307200911166096.jpg"
+                            alt="Slide 2"/></div>
+
+                    <!--Slide #3 & so on below-->
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <!-- Secondary features -->
+            <div class="span9">
+                <div class="media-body">
+                    <div class="tags"><a href="#" class="tag"></a>  <a href="#" class="type"></a></div>
+                    <h4 class="title media-heading"><a href="javascript:void(0);"><%=news.title%></a></h4>
+
+                    <!-- Meta details mobile -->
+
+                    <p> <%-news.content%></p>
+
+
+                </div>
+            </div>
+            <!--Contact block-->
+
+        </div>
+        <!-- Services -->
+
+        <!--Pricing Table-->
+
+
+        <!--Customer testimonial-->
+
+    </div>
+</div>
+
+
+<!--Scripts -->
+<script src="/webui1/js/jquery.js"></script>
+
+<!-- @todo: remove unused Javascript for better performance -->
+<script src="/webui1/js/bootstrap-transition.js"></script>
+<script src="/webui1/js/bootstrap-alert.js"></script>
+<script src="/webui1/js/bootstrap-affix.js"></script>
+<script src="/webui1/js/bootstrap-modal.js"></script>
+<script src="/webui1/js/bootstrap-dropdown.js"></script>
+<script src="/webui1/js/bootstrap-scrollspy.js"></script>
+<script src="/webui1/js/bootstrap-tab.js"></script>
+<script src="/webui1/js/bootstrap-tooltip.js"></script>
+<script src="/webui1/js/bootstrap-popover.js"></script>
+<script src="/webui1/js/bootstrap-button.js"></script>
+<script src="/webui1/js/bootstrap-collapse.js"></script>
+<script src="/webui1/js/bootstrap-carousel.js"></script>
+<script src="/webui1/js/bootstrap-typeahead.js"></script>
+
+<!--Non-Bootstrap JS-->
+<script src="/webui1/js/jquery.quicksand.js"></script>
+<script src="/webui1/js/jquery.flexslider-min.js"></script>
+
+<!--Custom scripts mainly used to trigger libraries -->
+<script src="/webui1/js/script.js"></script>
+
+
+
+<script type="text/javascript">
+
+    $(function(){
+
+        $("#sub").click(function(){
+            $("#error").empty().css("display","block")
+                    . append(" <img src='/images/loading.gif'/>正在处理登陆中。。。。。");
+            var   loginname= $("#loginname").val();
+            var   pass= $("#pass").val();
+            var crsf = $("#_csrf").val();
+            $.ajax({
+                        type: 'POST',
+                        url: "/user/signin",
+                        data: {
+                            "_csrf": crsf,
+                            loginname:loginname,
+                            pass:pass
+                        },
+                        dataType: "json",
+                        cache: false,
+                        success: function (msg) {
+                            if(msg.status!=200){
+                                $("#error").append("<div class='alert alert-error alert-block'>账号密码错误</div>");
+                                return;
+                            }
+                            if(msg.level == 1){
+                                window.location.href='/admin/travels';
+                            }else if(msg.level == 2){
+                                window.location.href='/agent/travels';
+                            }else{
+                                window.location.href='/qcheng';
+                            }
+
+                        }
+
+                    }
+            )
+
+        });
+    })  ;
+</script>
+
+</body>
+</html>

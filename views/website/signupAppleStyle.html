@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8"/>
+  <title>91启程网</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- @todo: fill with your company info or remove -->
+  <meta name="description" content=""/>
+  <meta name="author" content="Themelize.me"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <%include index_header.html%>
+
+</head>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+
+
+<body class="page page-index">
+<%include index_nav.html%>
+
+<div id="content" style="margin: 40px auto;width: 600px;">
+
+  <!-- Sign Up form -->
+  <form id="main_form"
+        action="/api/sign.json"
+        method="post"
+        class="required-validate form_contact" onsubmit="return false;">
+    <h4>基本信息</h4>
+
+
+    <div class="control-group">
+      <label class="control-label">用户名:</label>
+
+      <div class="controls">
+        <input class='input-xlarge required' type="text" id="loginname" name="loginname"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">邮箱:</label>
+
+      <div class="controls">
+        <input class='required email' type="text" id="email" name="email"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">真实姓名:</label>
+
+      <div class="controls">
+        <input class='required' type="text" id="name" name="name"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">联系电话:</label>
+
+      <div class="controls">
+        <input type="text" id="tel" name="tel"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">QQ:</label>
+
+      <div class="controls">
+        <input type="text" id="qq" name="qq"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">密码:</label>
+
+      <div class="controls">
+        <input type="password" id="pass" name="pass"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">密码确认:</label>
+
+      <div class="controls">
+        <input type="password" id="re_pass" name="re_pass"/>
+      </div>
+    </div>
+
+    <div class="contact_form ten columns alpha">
+
+
+      <h4>公司信息</h4>
+
+      <div class="eight columns alpha area">
+        选择地区:<br/>
+        <select name="province" id="province"></select>
+        <select name="city" id="city"></select>
+        <select name="area" id="area"></select>
+
+      </div>
+      <script type="text/javascript" language="javascript" src="/vendor/PCASClass.js"
+              charset="gb2312"></script>
+      <script type="text/javascript" language="javascript" defer="defer">
+        new PCAS("province", "city", "area");
+      </script>
+      <div class="four columns alpha">
+        公司名称:<br/>
+        <input type="text" id="company_name" name="company"/>
+      </div>
+      <div class="four columns alpha">
+        公司标识:<br/>
+        <input type="text" id="company_sign" name="sign" readonly/> <span style="color: red">公司标识为自动生成如需修改请联系管理员</span>
+      </div>
+      <div class="four columns alpha">
+        公司地址:<br/>
+        <input type="text" id="address" name="address"/>
+      </div>
+      <div class="four columns alpha">
+        公司介绍:<br/>
+        <textarea id="des" name="des"></textarea>
+      </div>
+
+      <div class="four columns alpha">
+
+        <a id="signupBtn" href="javascript:void(0)" class="btn btn-primary ">注册</a>
+        <a href="/" class="btn btn-primary ">返回</a>
+      </div>
+      <br>
+    </div>
+  </form>
+
+
+</div>
+
+<!-- FOOTER -->
+<%include index_footer.html%>
+
+
+<script src="/vendor/jquery.min.js"></script>
+<script src="/vendor/jquery.validate.js"></script>
+<script type="text/javascript">
+  (function () {
+//    jQuery('form').validate();
+
+    $("#signupBtn").bind("click", function () {
+      signupFn();
+    });
+    function generateSign() {
+      var company_name = $('#company_name').val();
+      $.ajax({
+        type: "GET",
+        url: "/api/admin/user/sign.json?company_name=" + company_name,
+        data: {time: new Date().getTime()},
+        success: function (msg) {
+          $('#company_sign').val(msg.sign);
+        }
+      });
+    }
+
+    $('#company_name').change(function () {
+      generateSign();
+    });
+
+    function signupFn() {
+      var $form = $("#main_form");
+      var confirmMsg = "确认提交吗？";
+
+      var data = {
+        "data": $form.serializeArray()
+      }
+
+      var _submitFn = function () {
+        $.ajax({
+            type: this.method || 'POST',
+            url:'/api/sign/add.json',
+            data: data,
+            cache: false,
+            success: function(r){
+              console.log(r);
+              if(r.status == 300){
+                alertify.error(r.error);
+              }
+              if(r.status == 200){
+                alertify.alert(r.success);
+								setTimeout(function(){
+									location.href = "/index";
+								},1500);
+              }
+            },
+            error: function(e,r){
+
+            }
+          }
+        );
+      }
+
+      alertify.confirm("确认注册吗？", function (e) {
+        if (e) {
+          _submitFn();
+        } else {
+        }
+      });
+    }
+
+  })();
+</script>
+
+<!--Custom scripts mainly used to trigger libraries -->
+</body>
+</html>

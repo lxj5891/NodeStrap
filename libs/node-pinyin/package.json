@@ -1,0 +1,24 @@
+{
+  "name": "pinyin2",
+  "version": "0.1.0",
+  "description": "Chinese Pinyin converter.",
+  "main": "src/pinyin.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "tests/pinyin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hotoo/node-pinyin.git"
+  },
+  "dependencies": {
+    "segment": "0.0.2",
+    "simplebig": "0.0.3"
+  },
+  "keywords": ["拼音", "Pinyin"],
+  "author": "闲耘 <hotoo.cn@gmail.com>",
+  "license": "MIT"
+}

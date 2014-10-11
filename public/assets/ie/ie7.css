@@ -1,0 +1,10 @@
+#page-content{
+  min-height: 500px
+}
+.divider {
+  /*display: none;*/
+}
+
+#sidebar-collapse {
+  display: none;
+}

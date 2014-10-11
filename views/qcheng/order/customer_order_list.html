@@ -1,0 +1,57 @@
+<div id="main-content" class="clearfix">
+
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">订单管理</li>
+    </ul>
+    <!--.breadcrumb-->
+  </div>
+  <!--#breadcrumbs-->
+
+
+  <div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1>订单列表</h1>
+    </div>
+    <!--/page-header-->
+    <div class="row-fluid">
+      <!-- PAGE CONTENT BEGINS HERE -->
+      <div class="row-fluid">
+        <div class="span12">
+          <table id="table_bug_report " class="table table-striped table-bordered table-hover nodeStrap-datagrid"
+                 url="/api/customer/order/list.json" page="<%=pageNum%>">
+            <thead>
+            <tr>
+              <th data-options="_travel.traveldate">出团时间</th>
+              <th data-options="_travel.travel_code">团号</th>
+              <th data-options="_product.routename">线路名称</th>
+              <th data-options="peoplecount">人数</th>
+              <th data-options="amount">金额</th>
+              <th data-options="updatedate">预订时间</th>
+              <th data-options="detaillink">操作详细</th>
+              <th data-options="status">订单状态</th>
+            </tr>
+            </thead>
+
+          </table>
+        </div>
+        <!--/span-->
+      </div>
+      <!--/row-->
+
+
+      <!-- PAGE CONTENT ENDS HERE -->
+    </div>
+
+    <div class="nodeStrap-pagination" url="/admin/users">
+    </div>
+
+
+  </div>
+  <!--/#page-content-->
+</div>
+<!-- #main-content -->
+<!--<script src="/qcheng.channels.js"></script>-->

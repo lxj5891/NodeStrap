@@ -1,0 +1,71 @@
+body {
+  background: #ffffff;
+}
+.editor {
+  width: 700px;
+}
+#displayImage {
+  width: 300px;
+}
+.tab-pane {
+  height: 104px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#MingDangTable {
+  width: 100%;
+}
+.order_status {
+  display: none;
+}
+.ListTime {
+  padding: 0px;
+  margin-top: 10px;
+  border: 1px solid #e7e7e7;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  margin-bottom: 20px;
+}
+.ListTime ul {
+  padding: 0px;
+  margin: 0px;
+  float: left;
+}
+.ListTime ul li {
+  float: left;
+  width: 132px;
+  text-align: center;
+  list-style: none;
+}
+.ListTime ul li a {
+  border-left: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  text-align: center;
+  line-height: 30px;
+  display: block;
+  height: 60px;
+  background: #f8f8f8;
+}
+.ListTime table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.li_1 {
+  background: #d9edf7;
+  height: 50px;
+}
+.li_2 {
+  height: 70px;
+}
+.li_2 .btn {
+  margin-top: 3px;
+}
+.timeline_center {
+  background: #d9edf7 !important;
+}
+#Calendar_list tr td {
+  text-align: center;
+}

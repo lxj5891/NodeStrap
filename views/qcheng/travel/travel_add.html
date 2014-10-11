@@ -1,0 +1,187 @@
+<div id="main-content" class="clearfix">
+
+  <div id="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><i class="icon-home"></i> <a href="#">主页</a><span class="divider"><i class="icon-angle-right"></i></span>
+      </li>
+      <li><a href="#">旅游管理</a> <span class="divider"><i class="icon-angle-right"></i></span></li>
+      <li class="active">发团</li>
+    </ul>
+    <!--.breadcrumb-->
+
+    <div id="nav-search">
+      <form class="form-search">
+									<span class="input-icon">
+										<input autocomplete="off" id="nav-search-input" type="text" class="input-small search-query"
+                           placeholder="Search ..."/>
+										<i id="nav-search-icon" class="icon-search"></i>
+									</span>
+      </form>
+    </div>
+    <!--#nav-search-->
+  </div>
+  <!--#breadcrumbs-->
+
+  <div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1>发团管理
+      </h1>
+    </div>
+    <!--test-->
+    <div class="row-fluid">
+      <!-- PAGE CONTENT BEGINS HERE -->
+      <form class="form-horizontal" id="travel" action="/agent/travel/add.json">
+        <input type="hidden" name="_channel" value="<%=locals.channel_id%>"/>
+        <input type="hidden" name="_product" value="<%=locals.product_id%>"/>
+        <input type="hidden" id="days" name="days" value="<%=locals.days%>"/>
+        <input type="hidden" id="finish_time" name="finish_time" data-date-format="yyyy-mm-dd"/>
+
+        <div class="control-group">
+          <label class="control-label">团号</label>
+
+          <div class="controls">
+            <input class="required" type="text" id="travel_code" name="travel_code" readOnly/>
+            当填写完信息后团号将自动根据出团日期重新生成
+          </div>
+        </div>
+
+
+        <div class="control-group">
+          <label class="control-label">成人结算价格</label>
+
+          <div class="controls">
+            <div class="input-append">
+              <input class="required digits input-small" type="text" id="adult_resultprices" name="adult_resultprices"/>
+              <span class="add-on">元/人</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">儿童结算价格</label>
+
+          <div class="controls">
+            <div class="input-append">
+              <input class="required digits input-small" type="text" id="child_resultprices" name="child_resultprices"/>
+              <span class="add-on">元/人</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">出团时间</label>
+
+          <div class="controls">
+            <input class="required date-picker" id="traveldate" name="traveldate" type="text"
+                   data-date-format="yyyy-mm-dd"/>
+            <span class="add-on"><i class="icon-calendar"></i></span>
+          </div>
+        </div>
+
+
+        <div class="control-group">
+          <label class="control-label">集合时间及地点</label>
+
+          <div class="controls">
+            <input class="required" type="text" name="pickup_time" id="pickup_name" placeholder="例如：2013-4-4 杭州火车站"/>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">总人数</label>
+
+          <div class="controls">
+            <input class="required" type="text" name="total" id="total"/>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-info" type="button" onclick="createTravelCode()">生成团号</button>
+          <button class="btn btn-info" type="button" onclick="submitFn()" msg="确认提交吗？">发布</button>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+  var has_travelcode = false;
+  (function () {
+    $('.date-picker').datepicker();
+    $("#traveldate").bind("change",function(){
+      has_travelcode = false;
+    });
+  })();
+
+  function submitFn(){
+    if(!has_travelcode){
+      $alertMsg.error("团号为空或者出团日期改变请重新生成团号。");
+      return ;
+    }
+    onNsclick('#travel');
+  }
+
+  function getFinishDate(traveldate, days) {
+    var _fnStringToDate = function (str) {
+      str = str.toString()
+      str = str.replace(/-/g, "/");
+      var _date = new Date(str);
+      return _date
+    };
+
+    var finish = _fnStringToDate(traveldate).getTime() + (days * (24 * 3600 * 1000));
+
+    var finishDate = new Date(finish);
+    var year = finishDate.getFullYear();
+    if (finishDate.getMonth() + 1 < 10) {
+      var month = "0" + finishDate.getMonth() + 1;
+    } else {
+      var month = finishDate.getMonth() + 1;
+    }
+    if (finishDate.getDate() < 10) {
+      var days = "0" + finishDate.getDate();
+    } else {
+      var days = finishDate.getDate();
+    }
+    var finData = year + "-" + month + "-" + days;
+    return finData;
+  }
+
+  function createTravelCode() {
+    var traveldate = $('#traveldate').val();
+    var days = $('#days').val();
+
+    var finishdata = getFinishDate(traveldate, days);
+    $("#finish_time").val(finishdata);
+
+    $.ajax({
+      type: 'POST',
+      url: '/agent/travelcode/get.json',
+      data: {
+        traveldate: traveldate,
+        days: days
+      },
+      cache: false,
+      success: function (msg) {
+        if (msg.data) {
+          $('#travel_code').val(msg.data);
+          has_travelcode = true;
+        }
+      }
+
+    });
+
+  }
+
+</script>
+
+
+
+
